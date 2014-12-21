@@ -1,7 +1,6 @@
 var onReady = function() {
 	var View = require('threejs-managed-view').View;
 	var SplineLoop = require('./');
-	console.log(SplineLoop);
 	var view = new View();
 	var scene = view.scene;
 
@@ -56,9 +55,10 @@ var onReady = function() {
 	    color: colorCameraRailOld
 	});
 
+	var coord = spline.cache(splineSegs);
 	for (var i = 0; i < splineSegs; i++) {
 		// var coord = spline.getPoint(i/splineSegs);
-		var coord = spline.getLoopPoint(i/splineSegs);
+		var coord = spline.getCachedLoopPoint(i/splineSegs);
 		var coordOld = spline.getPoint(i/splineSegs);
 		var vert = new THREE.Vector3(coord.x, coord.y, coord.z);
 		var vertOld = new THREE.Vector3(coordOld.x, coordOld.y, coordOld.z);
